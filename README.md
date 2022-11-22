@@ -17,3 +17,9 @@ pip install --upgrade pip
 pip install tensorflow # set up tensorflow
 python lab8.py # run code
 ```
+
+# Models
+
+NN model uses 2 fully-connected hidden layers of 1000 neurons, connected to 1 output neuron. Mean squared error was used as the loss function so that the output value is compared with the target value.
+
+CNN model uses 3 layers of convolution and padding, followed by 2 layers of fully-connected neurons, reducing the flattened output of CNN to 64 neurons and then to 1 output neuron. The loss function is also mean squared error. 
