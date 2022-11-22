@@ -18,12 +18,9 @@ features = pd.read_csv("features.txt", header=None)
 features = features.iloc[:, 0:-1] # remove filename column
 labels = features.iloc[:,0]
 features = features.iloc[:,1:]
-#features = features.values.reshape(features.shape[0], 16, 16, 3)
 
 features_train, features_test, labels_train, labels_test  = train_test_split(features, labels, test_size = 0.2)
 
-
-#tf.data.Dataset.from_tensor_slices(features_train, labels_train).repeat().batch(batch_size)
 
 # NN model
 print("Begin NN model!")
@@ -37,11 +34,6 @@ model.compile(optimizer='adam',
               loss=tf.keras.losses.MeanSquaredError(),
               metrics=['accuracy'])
 
-# model.fit(features_train, labels_train, epochs=n_epoch, batch_size = batch_size)
-
-#history = model.fit(features_train, labels_train, epochs=n_epoch, batch_size=batch_size,
-#                    validation_data=(features_test, labels_test))
-
 # tensorboard
 log_dir = "logs/nn/" + datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
 tensorboard_callback = tf.keras.callbacks.TensorBoard(log_dir=log_dir, histogram_freq=1)
@@ -52,7 +44,6 @@ model.fit(features_train, labels_train, epochs=n_epoch, batch_size = batch_size,
 
 test_loss, test_acc = model.evaluate(features_test, labels_test, verbose=2)
 
-'''
 
 # CNN model
 print("Begin CNN model!")
@@ -84,7 +75,7 @@ model2.fit(features_train, labels_train, epochs=n_epoch, batch_size = batch_size
           verbose = 2)
 
 test_loss2, test_acc2 = model2.evaluate(features_test, labels_test, verbose=2)
-'''
+
 '''
 # part 4
 unknown_features=[]
